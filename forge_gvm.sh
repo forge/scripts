@@ -2,8 +2,6 @@
  : ${1:?"Must specify an action ('release', 'set-version', 'broadcast', 'broadcast-freeform')"}
  : ${2:?"Must specify release version. Ex: 2.0.1.Final"}
 
-# API in http://www.wiredforcode.com/blog/2015/03/26/the-gvm-vendor-api
-
 ACTION=$1
 RELEASED_VERSION=$2
 
@@ -13,9 +11,8 @@ if [ "$ACTION" = "release" ]; then
 		-H "consumer_token: 0643c1b98def1c852448377261c3101616f29a1e3cf2d2a62ccf5e32d4afea0e" \
 		-H "Content-Type: application/json" \
 		-H "Accept: application/json" \
-		-d '{"candidate": "jbossforge", "version": "'"$RELEASED_VERSION"'", "url": "https://repository.jboss.org/nexus/service/local/artifact/maven/redirect?r=releases&g=org.jboss.forge&a=forge-distribution&v='$RELEASED_VERSION'&e=zip&c=offline"}' \
+		-d '{"candidate": "jbossforge", "version": "'"$RELEASED_VERSION"'", "url": "https://repository.jboss.org/nexus/service/local/repositories/releases/content/org/jboss/forge/forge-distribution/'$RELEASED_VERSION'/forge-distribution-'$RELEASED_VERSION'-offline.zip"}' \
 		https://gvm-vendor.herokuapp.com/release
-
 fi
 
 if [ "$ACTION" = "set-version" ]; then
