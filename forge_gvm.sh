@@ -2,6 +2,8 @@
  : ${1:?"Must specify an action ('release', 'set-version', 'broadcast', 'broadcast-freeform')"}
  : ${2:?"Must specify release version. Ex: 2.0.1.Final"}
 
+# API in http://www.wiredforcode.com/blog/2015/03/26/the-gvm-vendor-api
+
 ACTION=$1
 RELEASED_VERSION=$2
 
