@@ -2,3 +2,6 @@ Forge Release Scripts
 =====================
 
 This is where release scripts are kept
+
+* release_forge.sh:: Releases JBoss Forge. Requires the release version and the development version as parameters
+* release_forge.sh:: Releases JBoss Forge. Requires the release version and the development version as parameters
