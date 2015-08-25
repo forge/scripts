@@ -3,5 +3,6 @@ Forge Release Scripts
 
 This is where release scripts are kept
 
-* release_forge.sh:: Releases JBoss Forge. Requires the release version and the development version as parameters
-* release_forge.sh:: Releases JBoss Forge. Requires the release version and the development version as parameters
+* *release_furnace.sh*: Releases the Furnace Container along with its container implementations. Requires the release version and the development version as parameters
+* *release_forge.sh*: Releases JBoss Forge. Requires the release version and the development version as parameters
+* *forge_gvm.sh*: Releases JBoss Forge in GVM (http://gvmtool.net).
