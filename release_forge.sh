@@ -19,16 +19,26 @@ function release_forge {
                 -DdevelopmentVersion=$DEV \
                 -DreleaseVersion=$REL \
                 -Dtag=$REL \
-                -Darguments=-DskipTests \
+                -Darguments=-DskipTests
         cd ..
 }
 
 WORK_DIR=`mktemp -d 2>/dev/null || mktemp -d -t 'mytmpdir'`
 echo "Working in temp directory $WORK_DIR"
 cd $WORK_DIR
+
 release_forge $1 $2 git@github.com:forge/core.git forge $3
-# Copy to http://download.jboss.org/forge
-scp $WORK_DIR/dist/target/*.zip forge@filemgmt.jboss.org:/downloads_htdocs/forge/releases/$1/
-open https://repository.jboss.org/nexus/index.html
+echo "Release finished in temp directory $WORK_DIR"
+
+echo "Deploying to http://download.jboss.org/forge"
+mkdir -p $WORK_DIR/releases/$1
+mv $WORK_DIR/dist/target/*.zip $WORK_DIR/releases/$1
+scp -r $WORK_DIR/releases forge@filemgmt.jboss.org:/downloads_htdocs/forge/
+
+echo "Displaying SHA256 checksums (for Homebrew)"
+sha256sum $WORK_DIR/releases/*.zip
+
 echo "Cleaning up temp directory $WORK_DIR"
 rm -rf $WORK_DIR
+
+xdg-open https://repository.jboss.org/nexus/index.html
