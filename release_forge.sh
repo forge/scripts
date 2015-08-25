@@ -27,6 +27,8 @@ WORK_DIR=`mktemp -d 2>/dev/null || mktemp -d -t 'mytmpdir'`
 echo "Working in temp directory $WORK_DIR"
 cd $WORK_DIR
 release_forge $1 $2 git@github.com:forge/core.git forge $3
-xdg-open https://repository.jboss.org/nexus/index.html
+# Copy to http://download.jboss.org/forge
+scp $WORK_DIR/dist/target/*.zip forge@filemgmt.jboss.org:/downloads_htdocs/forge/
+open https://repository.jboss.org/nexus/index.html
 echo "Cleaning up temp directory $WORK_DIR"
 rm -rf $WORK_DIR
