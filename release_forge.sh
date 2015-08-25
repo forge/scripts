@@ -28,7 +28,7 @@ echo "Working in temp directory $WORK_DIR"
 cd $WORK_DIR
 release_forge $1 $2 git@github.com:forge/core.git forge $3
 # Copy to http://download.jboss.org/forge
-scp $WORK_DIR/dist/target/*.zip forge@filemgmt.jboss.org:/downloads_htdocs/forge/
+scp $WORK_DIR/dist/target/*.zip forge@filemgmt.jboss.org:/downloads_htdocs/forge/releases/$1/
 open https://repository.jboss.org/nexus/index.html
 echo "Cleaning up temp directory $WORK_DIR"
 rm -rf $WORK_DIR
