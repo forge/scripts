@@ -11,7 +11,7 @@ if [ "$ACTION" = "release" ]; then
 		-H "consumer_token: 0643c1b98def1c852448377261c3101616f29a1e3cf2d2a62ccf5e32d4afea0e" \
 		-H "Content-Type: application/json" \
 		-H "Accept: application/json" \
-		-d '{"candidate": "jbossforge", "version": "'"$RELEASED_VERSION"'", "url": "https://repository.jboss.org/nexus/service/local/repositories/releases/content/org/jboss/forge/forge-distribution/'$RELEASED_VERSION'/forge-distribution-'$RELEASED_VERSION'-offline.zip"}' \
+		-d '{"candidate": "jbossforge", "version": "'"$RELEASED_VERSION"'", "url": "http://download.jboss.org/forge/releases/'$RELEASED_VERSION'/forge-distribution-'$RELEASED_VERSION'-offline.zip"}' \
 		https://gvm-vendor.herokuapp.com/release
 fi
 
