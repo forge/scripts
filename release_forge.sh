@@ -32,7 +32,7 @@ echo "Release finished in temp directory $WORK_DIR"
 
 echo "Deploying to http://download.jboss.org/forge"
 mkdir -p $WORK_DIR/releases/$1
-mv $WORK_DIR/dist/target/*.zip $WORK_DIR/releases/$1
+mv $WORK_DIR/forge/target/checkout/dist/target/*.zip $WORK_DIR/releases/$1
 scp -r $WORK_DIR/releases forge@filemgmt.jboss.org:/downloads_htdocs/forge/
 
 echo "Displaying SHA256 checksums (for Homebrew)"
